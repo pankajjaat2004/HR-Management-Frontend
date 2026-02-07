@@ -1,0 +1,529 @@
+/* EmployeeDashboard Component Styles */
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+/* Modal Container */
+.modal-container {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  max-width: 42rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-gray-900);
+}
+
+/* Modal Close Button */
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-gray-500);
+  padding: var(--spacing-1);
+  border-radius: var(--border-radius);
+  transition: color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: var(--color-gray-700);
+  background-color: var(--color-gray-100);
+}
+
+/* Modal Description */
+.modal-description {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Body Scroll Lock Utilities */
+.body-scroll-lock {
+  overflow: hidden !important;
+}
+
+.main-content-button {
+  margin: 0 8px;
+  padding: 6px 8px;
+  border-radius: 18px;
+  border: none;
+  min-width: fit-content;
+  flex-shrink: 0;
+}
+
+.active {
+  scale: 1.03;
+  border: 1px solid black;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    padding: 1rem;
+    max-height: 95vh;
+  }
+
+  .modal-title {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Mobile Tab Styling */
+  .main-content {
+    width: 100%;
+    min-width: auto;
+    border-radius: 25px;
+  }
+
+  .main-content-button {
+    margin: 6px;
+    padding: 4px 8px;
+    font-size: var(--font-size-xs);
+    border-radius: 15px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    border-radius: 20px;
+    border: 1px solid var(--color-gray-300);
+  }
+
+  .main-content-button {
+    margin: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    border-radius: 12px;
+  }
+}
+
+/* Desktop Tabs - Hidden on Mobile */
+.desktop-tabs-only {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .desktop-tabs-only {
+    display: none !important;
+  }
+}
+
+/* Mobile Dropdown Menu Styling */
+.mobile-dropdown {
+  animation: slideDown 0.2s ease-out;
+  transform-origin: top;
+}
+
+.mobile-dropdown-item {
+  transition: all 0.15s ease;
+}
+
+.mobile-dropdown-item:hover {
+  transform: translateX(4px);
+}
+
+.mobile-dropdown-item:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.mobile-dropdown-item:last-child {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+/* ========================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .container {
+    padding: 0 var(--spacing-3);
+  }
+
+  /* Dashboard Stats Cards - Stack in column */
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-3,
+  .grid.md\:grid-cols-4 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  /* Card adjustments */
+  .card {
+    margin-bottom: var(--spacing-4);
+  }
+
+  .card-content {
+    padding: var(--spacing-4);
+  }
+
+  .card-header {
+    padding: var(--spacing-4);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+
+  /* Dashboard info cards with icons */
+  .flex.items-center {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-3);
+  }
+
+  .flex.items-center.justify-between {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Employee info section */
+  .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  /* Button groups */
+  .flex.gap-2,
+  .flex.gap-3,
+  .flex.gap-4 {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table responsive */
+  .overflow-x-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px;
+    font-size: var(--font-size-sm);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-2);
+    white-space: nowrap;
+  }
+
+  /* Modal adjustments for employee dashboard */
+  .modal-container {
+    margin: var(--spacing-2);
+    max-width: calc(100vw - var(--spacing-4));
+    max-height: calc(100vh - var(--spacing-4));
+  }
+
+  /* Leave request form adjustments */
+  .form-group {
+    margin-bottom: var(--spacing-4);
+  }
+
+  /* Date inputs side by side on tablet */
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3);
+  }
+
+  /* Personal info display */
+  .space-y-4 > * + * {
+    margin-top: var(--spacing-3);
+  }
+
+  /* Dashboard welcome section */
+  .text-3xl {
+    font-size: var(--font-size-2xl);
+  }
+
+  .text-2xl {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+  /* Ultra compact spacing */
+  .container {
+    padding: 0 var(--spacing-2);
+  }
+
+  .card-content {
+    padding: var(--spacing-3);
+  }
+
+  .card-header {
+    padding: var(--spacing-3);
+  }
+
+  /* Stats cards - compact layout */
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-3,
+  .grid.md\:grid-cols-4 {
+    gap: var(--spacing-3);
+  }
+
+  /* Dashboard quick actions */
+  .flex.items-center {
+    padding: var(--spacing-3);
+  }
+
+  /* Icon adjustments */
+  .w-8.h-8 {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Text size adjustments */
+  .text-2xl {
+    font-size: var(--font-size-lg);
+  }
+
+  .text-xl {
+    font-size: var(--font-size-base);
+  }
+
+  /* Compact table */
+  .table {
+    font-size: var(--font-size-xs);
+    min-width: 500px;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-1) var(--spacing-2);
+  }
+
+  /* Badge sizes */
+  .badge {
+    padding: 2px var(--spacing-2);
+    font-size: 10px;
+  }
+
+  /* Button sizes */
+  .btn {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+
+  .btn-sm {
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: 10px;
+    min-height: 28px;
+  }
+
+  /* Modal full screen */
+  .modal-container {
+    margin: var(--spacing-1);
+    border-radius: var(--border-radius);
+    max-height: 95vh;
+  }
+
+  /* Form elements */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--spacing-2);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Leave request form specific */
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .flex.items-center.gap-2 {
+    gap: var(--spacing-1);
+  }
+
+  /* Dashboard header */
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  h3.card-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .card-description {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Employee dashboard specific stats */
+  .flex.justify-between {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  /* Time tracking display */
+  .text-3xl.font-bold {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Personal info section */
+  .space-y-4 {
+    gap: var(--spacing-2);
+  }
+
+  .space-y-4 > * + * {
+    margin-top: var(--spacing-2);
+  }
+}
+
+/* Extra small screens (360px and below) */
+@media (max-width: 360px) {
+  /* Absolute minimum spacing */
+  .container {
+    padding: 0 var(--spacing-1);
+  }
+
+  .card {
+    border-radius: var(--border-radius-sm);
+  }
+
+  .card-content {
+    padding: var(--spacing-2);
+  }
+
+  .card-header {
+    padding: var(--spacing-2);
+  }
+
+  /* Ultra compact dashboard */
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-3,
+  .grid.md\:grid-cols-4 {
+    gap: var(--spacing-2);
+  }
+
+  /* Minimal table */
+  .table {
+    min-width: 450px;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-1);
+    font-size: 11px;
+  }
+
+  /* Minimal buttons */
+  .btn {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-xs);
+    min-height: 36px;
+  }
+
+  .btn-sm {
+    padding: 4px var(--spacing-1);
+    font-size: 9px;
+    min-height: 24px;
+  }
+
+  /* Form elements */
+  .form-input,
+  .form-select {
+    padding: var(--spacing-1) var(--spacing-2);
+  }
+
+  /* Hide decorative elements */
+  .badge {
+    font-size: 9px;
+    padding: 1px var(--spacing-1);
+  }
+
+  /* Dashboard icons smaller */
+  .w-8.h-8 {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Text hierarchy */
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  h3 {
+    font-size: var(--font-size-base);
+  }
+
+  /* Modal ultra compact */
+  .modal-container {
+    padding: var(--spacing-2);
+  }
+
+  .modal-title {
+    font-size: var(--font-size-base);
+  }
+
+  /* Leave form compact */
+  .form-group {
+    margin-bottom: var(--spacing-2);
+  }
+
+  /* Hide non-essential info */
+  .text-sm.text-gray-500 {
+    font-size: 11px;
+  }
+}
