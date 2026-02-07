@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../utils/api";
 import toast from "react-hot-toast";
 
 const AdminAddCallerDataSection = () => {
@@ -22,7 +22,7 @@ const AdminAddCallerDataSection = () => {
     const fetchEmployees = async () => {
       try {
         setSearchLoading(true);
-        const response = await axios.get("/api/employees");
+        const response = await apiClient.get("/api/employees");
         if (response.data.success) {
           // Filter out admins, only show regular employees
           const regularEmployees = response.data.employees.filter(
@@ -45,7 +45,7 @@ const AdminAddCallerDataSection = () => {
     if (!employeeId || !date) return;
 
     try {
-      const response = await axios.get("/api/calls/all", {
+      const response = await apiClient.get("/api/calls/all", {
         params: {
           employee: employeeId,
           date: date,
@@ -121,7 +121,7 @@ const AdminAddCallerDataSection = () => {
 
       if (existingData) {
         // Update existing data
-        const response = await axios.put(`/api/calls/${existingData._id}`, {
+        const response = await apiClient.put(`/api/calls/${existingData._id}`, {
           totalCalls: formData.totalCalls,
           totalCallTime: formData.totalCallTime,
           interestedStudents: formData.interestedStudents,
@@ -144,7 +144,7 @@ const AdminAddCallerDataSection = () => {
         }
       } else {
         // Create new data
-        const response = await axios.post("/api/calls", {
+        const response = await apiClient.post("/api/calls", {
           employee: formData.employee,
           date: formData.date,
           totalCalls: formData.totalCalls,
