@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../utils/api";
 import toast from "react-hot-toast";
 
 const AdminCallerDataSection = ({ department = "all" }) => {
@@ -24,7 +24,7 @@ const AdminCallerDataSection = ({ department = "all" }) => {
       if (department && department !== "all")
         params.append("department", department);
 
-      const response = await axios.get(`/api/calls/performance/stats?${params}`);
+      const response = await apiClient.get(`/api/calls/performance/stats?${params}`);
 
       if (response.data.success) {
         setPerformanceData(response.data.performanceData || []);
@@ -49,7 +49,7 @@ const AdminCallerDataSection = ({ department = "all" }) => {
       if (department && department !== "all")
         params.append("department", department);
 
-      const response = await axios.get(`/api/calls/all?${params}`);
+      const response = await apiClient.get(`/api/calls/all?${params}`);
 
       if (response.data.success && response.data.callDataRecords) {
         setCallData(response.data.callDataRecords);
@@ -68,7 +68,7 @@ const AdminCallerDataSection = ({ department = "all" }) => {
       params.append("year", year);
       params.append("employee", employeeId);
 
-      const response = await axios.get(`/api/calls/all?${params}`);
+      const response = await apiClient.get(`/api/calls/all?${params}`);
 
       if (response.data.success && response.data.callDataRecords) {
         // Process the data to get monthly performance
@@ -131,7 +131,7 @@ const AdminCallerDataSection = ({ department = "all" }) => {
       if (department && department !== "all")
         params.append("department", department);
 
-      const response = await axios.get(`/api/calls/export/excel?${params}`, {
+      const response = await apiClient.get(`/api/calls/export/excel?${params}`, {
         responseType: "blob",
       });
 
@@ -180,7 +180,7 @@ const AdminCallerDataSection = ({ department = "all" }) => {
       params.append("month", selectedEmployeeData.month);
       params.append("year", selectedEmployeeData.year);
 
-      const response = await axios.get(`/api/calls/export/excel?${params}`, {
+      const response = await apiClient.get(`/api/calls/export/excel?${params}`, {
         responseType: "blob",
       });
 
